@@ -1,0 +1,68 @@
+h, height
+
+nodesAmount = 2^(h - 1) - 1
+
+
+Level 1: 2^0 = 1
+Level 2: 2^1 = 2
+Level 3: 2^2 = 4
+...
+
+1
+
+ 1
+2 3
+
+
+Right branch
+   7
+ 3   6
+1 2 4 5
+
+7 -> 6 -> 5
+
+15
+x 14
+x x x 13
+x x x x x x x 12
+
+        15
+   7         14
+ 3   6      10  13
+1 2  4 5   8 9  11 12
+
+[Pattern] Right child = Parent - 1
+
+
+31
+x 30
+x x x 29
+x x x x x x x 28
+x x x x x x x x x x x x x x x 27
+
+                      31
+        15                       30
+   7         14              22         29
+ 3   6      10  13         18  21       25    28
+1 2  4 5   8 9  11 12    16 17  19 20    23 24  26 27
+
+
+From Bottom:
+[Pattern] Level 1: Left sibling = Right sibling - 1
+[Pattern] Level 2: Left sibling = Right sibling - 3
+[Pattern] Level 3: Left sibling = Right sibling - 7
+[Pattern] Level 4: Left sibling = Right sibling - 15
+
+
+2 -> 3
+5 -> 6 -> 7
+9 -> 10
+12 -> 13 -> 14 -> 15
+
+17 -> 18
+20 -> 21 -> 22
+24 -> 25
+27 -> 28 -> 29 -> 30 -> 31
+
+
+Unstable: 1, 4, 8, 11; 16, 19, 23, 26
