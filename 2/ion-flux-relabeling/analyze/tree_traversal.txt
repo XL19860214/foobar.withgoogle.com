@@ -1,0 +1,44 @@
+* https://en.wikipedia.org/wiki/Tree_traversal
+* https://www.tutorialspoint.com/data_structures_algorithms/tree_traversal.htm
+
+Factors:
+* Perfect tree
+* Post order: Left -> Right -> Parent
+
+Patterns:
+* Right child = parent - 1
+* Right child > Left child
+* Right children > Left children
+* Left sibling = Right sibling - Apex >> n
+* Diff = Apex >> n
+
+
+1
+
+ 3
+1 2
+
+bin
+  11
+1   10
+
+   7
+ 3   6
+1 2 4 5
+
+bin
+      111
+  11        110
+1   10   100   101
+
+
+        15
+    7           14
+ 3    6     10      13
+1 2  4 5   8  9   11  12
+
+bin
+                  1111
+      111                         1110
+  11        110           1010            1101
+1   10   100   101    1000    1001    1011    1100

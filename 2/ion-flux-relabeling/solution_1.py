@@ -1,5 +1,9 @@
 # Copyright (c) Xuwei Li
 
+
+import math
+
+
 def solution(h, q):
     # Domain check
     if h < 1 or h > 30:
@@ -7,29 +11,31 @@ def solution(h, q):
     lenQ = len(q)
     if lenQ < 1 or lenQ > 10000:
         return False
+    if min(q) < 1:
+        return False
+    if math.log(max(q), 2) > h:
+        return False
+    # Optimization
+    treeH = min([h, math.ceil(math.log(max(q), 2)) + 1])
     # Process
-    max = pow(2, h) - 1
-    tree = Tree(h)
+    tree = Tree(treeH)
     p = []
     for qI in q:
-        if qI > 0 and qI <= max:
-            p.append(tree.nodes[qI].parent)
-        else:
-            return False
+        p.append(tree.nodes[qI].parent)
     return p
 
 
 class Tree:
     h = None
-    max = None
+    apex = None
     nodes = {}
     
     # Construct tree with all nodes
     def __init__(self, h):
         self.h = h
-        self.max = pow(2, h) - 1
-        self.addNode(Node(self.max, 1))
-        self.addChain(self.max, 1)
+        self.apex = pow(2, h) - 1
+        self.addNode(Node(self.apex, 1))
+        self.addChain(self.apex, 1)
 
     # Add chain of nodes
     def addChain(self, start, ceil):

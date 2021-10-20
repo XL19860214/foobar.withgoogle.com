@@ -5,75 +5,35 @@ import math
 
 
 def solution(h, q):
-    # Domain check
-    if h < 1 or h > 30:
-        return False
-    lenQ = len(q)
-    if lenQ < 1 or lenQ > 10000:
-        return False
     if min(q) < 1:
         return False
     if math.log(max(q), 2) > h:
         return False
-    # Optimization
-    treeH = min([h, math.ceil(math.log(max(q), 2)) + 1])
-    # Process
-    tree = Tree(treeH)
-    p = []
-    for qI in q:
-        p.append(tree.nodes[qI].parent)
-    return p
+    apex = 2 ** h - 1
+    return [getParentNode(apex, node) for node in q]
 
 
-class Tree:
-    h = None
-    apex = None
-    nodes = {}
-    
-    # Construct tree with all nodes
-    def __init__(self, h):
-        self.h = h
-        self.apex = pow(2, h) - 1
-        self.addNode(Node(self.apex, 1))
-        self.addChain(self.apex, 1)
+def getParentNode(apex, target):
+    if apex == target:
+        return -1
 
-    # Add chain of nodes
-    def addChain(self, start, ceil):
-        count = 1
-        level = ceil + 1
-        parentLabel = start
-        while level <= self.h:
-            label = start - count
-            floor = self.h - level + 1
-            siblingFactor = pow(2, floor) - 1
-            siblingLabel = label - siblingFactor
-            self.addNode(Node(label, level, right=True, parent=parentLabel, sibling=siblingLabel))
-            # next loop
-            count += 1
-            level += 1
-            parentLabel = label
+    current_node = apex
+    diff = apex
 
-    # Add node and sibling node
-    def addNode(self, node):
-        if node.label not in self.nodes:
-            self.nodes[node.label] = node
-        # Propagate
-        if node.sibling and node.sibling not in self.nodes:
-            self.addNode(Node(node.sibling, node.ceil, parent=node.parent, sibling=node.label))
-            self.addChain(node.sibling, node.ceil)
+    while diff > 1:
+        parent = current_node
+        # Move down one level
+        diff = diff >> 1
+        # Locate two children
+        left_child = current_node - diff - 1
+        right_child = current_node - 1
+        # Check if target is one of children
+        if target == left_child or target == right_child:
+            return parent
+        # Assign current node for next loop
+        if target < left_child:
+            current_node = left_child
+        elif target > left_child:
+            current_node = right_child
 
-
-class Node:
-    label = None
-    right = False
-    parent = -1
-    sibling = None
-    ceil = None
-
-    def __init__(self, label, ceil, right=False, parent=-1, sibling=None):
-        self.label = label
-        self.ceil = ceil
-        # Optional
-        self.right = right
-        self.parent = parent
-        self.sibling = sibling
+    return False
