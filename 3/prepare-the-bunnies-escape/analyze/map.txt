@@ -1,0 +1,13 @@
+* w: Width of the map
+* h: Height of the map
+* Map size = w * h
+* m[x][y] can be used to indicate location on map
+  - m[0][0], m[h-1][w-1]
+
+
+# Moves can only be made in cardinal directions; no diagonal moves are allowed.
+* Only apply +-1 change to x or y in one move is allowed
+* Shortest route: w + h - 1
+
+
+m[0][0], m[h-1][w-1] must be used

@@ -1,0 +1,10 @@
+m[y][x]
+
+# Find an escape route
+1. Start at m[0][0].
+2. Move to the next available position.
+3. Maintain a movement history.
+4. Forward to any position that is available.
+5. Backward if no available forward position available, blacklist this position.
+6. Repeat 4, 5 until reach m[h-1][w-1].
+

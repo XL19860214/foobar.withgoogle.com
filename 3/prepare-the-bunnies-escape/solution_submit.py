@@ -15,7 +15,7 @@ def solution(map):
                 path = findPath(newMap)
                 if path:
                     paths[len(path)] = path
-    print(paths) #DEBUG
+    # print(paths) #DEBUG
 
     return min(paths)
 
@@ -25,7 +25,7 @@ def findPath(map, optimize = False):
     blacklist = []
     w = len(map[0])
     h = len(map)
-    print('w', w, 'h', h) #DEBUG
+    # print('w', w, 'h', h) #DEBUG
     x = 0
     y = 0
     history.append((x, y))
@@ -41,18 +41,18 @@ def findPath(map, optimize = False):
         else: # Fallback
             last = history.pop()
             blacklist.append(last)
-            print('Blacklist', last) #DEBUG
+            # print('Blacklist', last) #DEBUG
             if last == (0, 0):
-                print('Must break wall.')
+                # print('Must break wall.') #DEBUG
                 return False
             fallback = history.pop()
             x = fallback[0]
             y = fallback[1]
 
         history.append((x, y))
-        print('Move to', (x, y)) #DEBUG
+        # print('Move to', (x, y)) #DEBUG
     
-    print(history) #DEBUG
+    # print(history) #DEBUG
 
     if optimize:
         #
@@ -85,9 +85,9 @@ def findPath(map, optimize = False):
                 longest = range_
             
         if walls:
-            print('walls', walls) #DEBUG
+            # print('walls', walls) #DEBUG
             history[longest[0]:longest[1]] = walls[longest]
 
-        print(history) #DEBUG
+        # print(history) #DEBUG
 
     return history
