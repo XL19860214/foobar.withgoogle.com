@@ -1,0 +1,21 @@
+* https://en.wikipedia.org/wiki/Shortest_path_problem
+
+
+Factors:
+* Start position
+* End position
+* An always solvable map
+* Only do cardinal directions movement: Up / Right / Down / Left
+* There are positions can be moved to
+* There are walls can not be moved to
+* Zero or one wall can be broken discretely
+
+
+Algorithm:
+* A queue for unvisited nodes
+* Never visit the same node twice
+* Indicates the distance on the node
+* Indicates one wall which neighbor to a position which may be broken
+* O(2A) for indicating two noted maps from top-left and bottom-right vertex
+* O(A) for connecting two noted maps by overlapping same position of two noted maps to get the shortest path from top-left to bottom-right
+* O(3A)
