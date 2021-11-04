@@ -1,0 +1,32 @@
+> The consoles are programmed to know which keys each minion had (p.2)
+> Command Lambda wouldn't issue more keys than necessary (p.3)
+> any num_required bunnies can open the locks, but no group of (num_required - 1) bunnies can. (p.4)
+
+Make (num_buns, num_required) have meaning of:
+
+* nB = num_buns
+* nR = num_required
+
+* Any num_required of num_buns always hold at least one different key individually.
+* Any num_required of num_buns always hold correct keys union but (number < num_required) of num_buns never can.
+* Keys unions from any num_required of num_buns are the same.
+* Keys sets from any two bunnies are always different when num_required > 1.
+* All bunnies hold the same amount of keys
+* Amounts of duplicate keys for locks are equal.
+  - If lock-0, lock-1 are being used
+  - If the number of keys for lock-0 is 2, then the number keys for lock-1 is 2, too.
+
+* nL = number of locks
+* nD = a list of numbers of duplicate keys of the corresponding lock
+     = Duplicate Keys
+
+-> (nL * nD) % nB == 0
+
+
+* nL = number of locks
+* nD = a list of numbers of duplicate keys of the corresponding lock
+     = Duplicate Keys
+
+
+* nB > Duplicate Keys > nB - nR
+* nD = nB - nR + 1

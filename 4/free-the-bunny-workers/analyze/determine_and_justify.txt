@@ -1,0 +1,39 @@
+
+From paragraph 4:
+> Given the number of bunnies available and the number of locks required to
+> open a work room, write a function solution(num_buns, num_required) which
+> returns a specification of how to distribute the keys such that any
+> num_required bunnies can open the locks, but no group of (num_required - 1) 
+> bunnies can.
+
+We determine:
+* x = num_buns - (num_required - 1)
+* x number of bunnies always have at least one key that (num_required - 1) number of bunnies do not have.
+* We require x number of duplicate keys per lock to fulfill the scheme.
+
+Assignment:
+* Assign keys_per_lock = x = num_buns - (num_required - 1)
+
+
+Then, we determine how to distribute the duplicate keys per lock to each bunny:
+* Use combination method to list combinations of nCr(num_buns, keys_per_lock).
+  - The list of combinations tells how to distribute duplicate keys per lock to bunnies.
+
+
+From paragraph 5:
+> ...
+> Find the lexicographically least such key distribution
+> ...
+
+While list of combinations of nCr(num_buns, keys_per_lock) shows the least key
+  distribution in the condition of keys_per_lock = num_buns - (num_required - 1)
+
+We determine:
+* If we define num_locks as Number of Locks.
+* num_locks = nCr(num_buns, keys_per_lock)
+
+We use the lexicographically list of combinations of nCr(num_buns, keys_per_lock),
+  and denote items by using whole number 0 -> (num_locks - 1).
+
+After we map previous results to final solution, we have the solution fulfill
+  the requirement.

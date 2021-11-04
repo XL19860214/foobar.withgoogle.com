@@ -1,0 +1,5 @@
+* num_buns, Number of Bunnies
+* num_required, Number of Required Bunnies to get free
+* Number of Locks
+* Number of Duplicates per Key
+
