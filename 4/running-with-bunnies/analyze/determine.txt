@@ -1,0 +1,3 @@
+1. Use Floyd–Warshall algorithm get All-Pairs Shortest Paths;
+2. If there is negative cycle, return all bunnies;
+3. If no negative cycles, return the largest amount of bunnies.
