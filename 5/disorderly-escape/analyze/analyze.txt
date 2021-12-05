@@ -1,0 +1,2 @@
+* https://en.wikipedia.org/wiki/P%C3%B3lya_enumeration_theorem
+* https://en.wikipedia.org/wiki/Burnside%27s_lemma
